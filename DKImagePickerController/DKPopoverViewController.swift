@@ -11,7 +11,7 @@ import UIKit
 open class DKPopoverViewController: UIViewController {
     
     open class func popoverViewController(_ viewController: UIViewController, fromView: UIView) {
-        let window = UIApplication.shared.keyWindow!
+        guard let window = UIApplication.shared.delegate?.window!! else { return }
         
         let popoverViewController = DKPopoverViewController()
         
@@ -23,7 +23,7 @@ open class DKPopoverViewController: UIViewController {
     }
     
     open class func dismissPopoverViewController() {
-        let window = UIApplication.shared.keyWindow!
+        guard let window = UIApplication.shared.delegate?.window!! else { return }
 
         for vc in window.rootViewController!.childViewControllers {
             if vc is DKPopoverViewController {
